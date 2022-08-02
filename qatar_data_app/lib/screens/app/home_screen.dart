@@ -5,7 +5,7 @@ import 'package:qatar_data_app/models/note.dart';
 import 'package:qatar_data_app/models/process_response.dart';
 import 'package:qatar_data_app/preferences/shared_pref_controller.dart';
 import 'package:qatar_data_app/provider/note_provider.dart';
-import 'package:qatar_data_app/screens/app/note_screen.dart';
+import 'package:qatar_data_app/screens/app/technician_screen.dart';
 import 'package:qatar_data_app/utils/helpers.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -57,44 +57,63 @@ class _HomeScreenState extends State<HomeScreen> with Helpers {
             return ListView.builder(
                 itemCount: noteProvider.notes.length,
                 itemBuilder: (context, index) {
-                  return Card(
-                    color: Colors.blueGrey[200],
-                    clipBehavior: Clip.antiAlias,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
+                  return Container(
+                    height: 100,
+                    child: Card(
+                      color: Colors.brown[200],
+                      clipBehavior: Clip.antiAlias,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
 
-                    ),
+                      ),
 
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ListTile(
+                      child:
+                          ListTile(
 
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => NoteScreen(
-                                  note: noteProvider.notes[index],
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => NoteScreen(
+                                    note: noteProvider.notes[index],
+                                  ),
                                 ),
-                              ),
-                            );
-                          },
-                   leading: Image.asset('assest/user.png'),
-                          title: Text(noteProvider.notes[index].title),
-                          subtitle: Text(noteProvider.notes[index].info),
-                          trailing: IconButton(
-                            onPressed: () async => await deleteNote(index: index),
-                            icon: const Icon(Icons.delete)
+                              );
+                            },
+                     leading: Container(
+                       // width: 100,
+                     // height: 100,
+
+                         child: Image.asset('assest/user.png')),
+
+                            title: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: Text(noteProvider.notes[index].title),
+                            ),
+
+                            subtitle: Column(
+
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(noteProvider.notes[index].info),
+                                Text(noteProvider.notes[index].numb),
+
+
+                              ],
+                            ),
+
+                            trailing: IconButton(
+                              onPressed: () async => await deleteNote(index: index),
+                              icon: const Icon(Icons.delete)
+
+                            ),
 
                           ),
 
-                        ),
+                          // Text(noteProvider.notes[index].numb),
 
-                        Text(noteProvider.notes[index].numb),
-                      ],
+
                     ),
-
                   );
 
                 });

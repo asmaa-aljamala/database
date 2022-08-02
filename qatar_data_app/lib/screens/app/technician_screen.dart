@@ -46,59 +46,66 @@ class _NoteScreenState extends State<NoteScreen> with Helpers {
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
+        backgroundColor: Colors.green,
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style: GoogleFonts.nunito(
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
-            ),
-            Text(
-              AppLocalizations.of(context)!.note_hint,
-              style: GoogleFonts.nunito(
-                fontSize: 16,
-                fontWeight: FontWeight.w300,
-                color: Colors.black45,
-              ),
-            ),
-            SizedBox(height: 20),
-            AppTextField(
-              textController: _titleTextController,
-              hint: AppLocalizations.of(context)!.title,
-              prefixIcon: Icons.title,
-            ),
-            SizedBox(height: 10),
-            AppTextField(
-              textController: _infoTextController,
-              hint: AppLocalizations.of(context)!.info,
-              prefixIcon: Icons.info,
-            ),
-            const SizedBox(height: 10),
-            AppTextField(
-              textController: _numbTextController,
-              hint: AppLocalizations.of(context)!.numb,
-              prefixIcon: Icons.numbers,
-            ),
-            const SizedBox(height: 20),
-
-            ElevatedButton(
-              onPressed: () async => await _performSave(),
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size(double.infinity, 50),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: GoogleFonts.nunito(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
                 ),
               ),
-              child: Text(AppLocalizations.of(context)!.save),
-            ),
-          ],
+              Text(
+                AppLocalizations.of(context)!.note_hint,
+                style: GoogleFonts.nunito(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w300,
+                  color: Colors.black45,
+                ),
+              ),
+              SizedBox(height: 20),
+              AppTextField(
+                textController: _titleTextController,
+                hint: AppLocalizations.of(context)!.title,
+                prefixIcon: Icons.title,
+              ),
+              SizedBox(height: 10),
+              AppTextField(
+                textController: _infoTextController,
+                hint: AppLocalizations.of(context)!.info,
+                prefixIcon: Icons.info,
+              ),
+              const SizedBox(height: 10),
+              AppTextField(
+                textController: _numbTextController,
+                hint: AppLocalizations.of(context)!.numb,
+                prefixIcon: Icons.numbers,
+              ),
+              const SizedBox(height: 20),
+
+              ElevatedButton(
+                onPressed: () async => await _performSave(),
+
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size(double.infinity, 50),
+                  primary: Colors.green,
+
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+
+                ),
+                child: Text(AppLocalizations.of(context)!.save),
+              ),
+            ],
+          ),
         ),
       ),
     );

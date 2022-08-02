@@ -10,10 +10,10 @@
   "register_subtitle": "Enter details below",
   "name": "Name",
 
-  "new_note": "New Note",
-  "update_note": "Update Note",
+  "new_note": "new technician ",
+  "update_note": "Update technician",
   "note_hint":"Enter title & info",
-  "title": "Title",
+  "title": "Name",
   "info": "Info",
   "numb": "Mobile number",
 
